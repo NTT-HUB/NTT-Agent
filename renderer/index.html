@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'">
+  <title>NTT Agent Desktop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">N</span><div><strong>NTT Agent</strong><small id="app-version">DESKTOP</small></div></div>
+    <div class="workspace-controls">
+      <label for="territory">Phân vùng bộ nhớ</label>
+      <select id="territory"></select>
+      <button id="choose-territory" title="Chọn thư mục dự án trên máy; AI sửa file ngay tại đó">Chọn thư mục…</button>
+      <span id="quota" class="quota">—</span>
+    </div>
+    <div class="top-actions"><span class="status-pill" id="runtime-status">● Windows · PowerShell</span></div>
+  </header>
+
+  <main class="layout">
+    <aside class="explorer">
+      <div class="section-heading"><span>FILES</span><button id="refresh-files" title="Tải lại">↻</button></div>
+      <div id="file-tree" class="tree"></div>
+      <div class="explorer-foot">AI chỉ thấy file trong thư mục đang chọn.<br><span id="workspace-path">Chưa chọn thư mục dự án.</span></div>
+    </aside>
+
+    <div class="work-area">
+      <section class="editor-panel">
+        <div class="panel-toolbar">
+          <span id="file-title" class="file-title">Chưa mở file</span>
+          <div><button id="new-file">File mới</button><button id="save-file" class="primary" disabled>Lưu</button><button id="run-file" disabled>Chạy file</button></div>
+        </div>
+        <div class="editor-code"><pre id="editor-highlight" aria-hidden="true"></pre><textarea id="editor" aria-label="Trình sửa code" spellcheck="false" placeholder="Chọn file bên trái hoặc tạo file mới..."></textarea></div>
+        <div class="editor-status"><span id="file-state">Sẵn sàng</span><span><span id="code-language">Text</span> · UTF-8 · Ctrl+S để lưu</span></div>
+      </section>
+      <section class="terminal-panel">
+        <div class="panel-toolbar"><strong id="terminal-title">TERMINAL · POWERSHELL</strong><div><button id="clear-terminal">Xóa màn hình</button><button id="stop-terminal" disabled>Dừng</button></div></div>
+        <pre id="terminal-output" aria-live="polite">Lệnh chạy trực tiếp bằng quyền tài khoản Windows hiện tại.
+Mỗi lượt bắt đầu trong thư mục dự án đã chọn. Thư mục này không phải vùng cách ly hệ điều hành.
+</pre>
+        <form id="terminal-form"><span class="prompt-symbol" id="terminal-prompt">PS&gt;</span><input id="terminal-command" autocomplete="off" placeholder="py main.py, node app.js, npm.cmd install, php index.php, lua main.lua..."><button type="submit" class="primary">Chạy</button></form>
+      </section>
+    </div>
+
+    <section class="chat-panel">
+      <div class="chat-head"><div><strong>AI AGENT</strong><small id="connection-state">Chưa kết nối</small></div><div class="chat-head-actions"><button id="clear-chat" title="Xóa lịch sử chat đã lưu trong app">Dọn chat</button><button id="connection-button">Kết nối</button></div></div>
+      <div class="model-row"><select id="provider"><option value="gemini">Gemini</option><option value="deepseek">DeepSeek</option><option value="other">Other</option></select><select id="connection-mode" aria-label="Kiểu kết nối"><option value="api">API key</option><option value="session">Session</option></select></div>
+      <div id="model-controls" class="model-row"><select id="model-preset" aria-label="Danh sách model"></select><input id="model" aria-label="Tên model tùy chỉnh" placeholder="Tên model" hidden><button id="save-model" title="Lưu model" hidden>✓</button></div>
+      <div id="gemini-session-options" class="session-options" hidden><label for="session-gemini-model">Gemini Session</label><select id="session-gemini-model"><option>4 Argon</option><option>3.6 Flash</option><option>3.5 Flash-Lite</option><option>3.1 Pro</option><option>Tư duy mở rộng</option></select></div>
+      <div id="deepseek-session-options" class="session-options" hidden><label><input type="checkbox" id="session-thinking"> DeepThink</label><label><input type="checkbox" id="session-search"> Web Search</label></div>
+      <div id="chat-messages" class="messages"></div>
+      <form id="chat-form" class="composer">
+        <div class="mode-row"><label><input type="radio" name="mode" value="ask" checked> Hỏi</label><label><input type="radio" name="mode" value="agent"> Agent · được dùng công cụ trong phân vùng bộ nhớ</label></div>
+        <textarea id="chat-input" rows="3" placeholder="Mô tả việc cần làm... (Ctrl+Enter để gửi)"></textarea>
+        <div class="compose-actions"><span id="task-status">AI sẽ tự quyết định khi nào cần dùng công cụ.</span><button type="button" id="stop-agent" hidden>Dừng</button><button type="submit" class="primary" id="send-button">Gửi</button></div>
+      </form>
+    </section>
+  </main>
+
+  <dialog id="connect-dialog">
+    <form method="dialog" class="dialog-body"><h2>Kết nối model</h2><p id="connect-desc"></p>
+      <div id="api-connection"><div id="other-endpoint" hidden><label for="base-url">URL backend</label><input id="base-url" type="url" spellcheck="false" placeholder="https://api.xah.io"><label for="other-model">Model</label><input id="other-model" spellcheck="false" placeholder="Tên model từ backend"><p class="hint">Other dùng giao thức Messages tại /v1/messages; HTTP chỉ cho localhost.</p></div><label for="api-key">API key</label><input id="api-key" type="password" autocomplete="off" placeholder="Dán khóa vào đây">
+        <p class="hint">Khóa được mã hóa bằng Windows DPAPI trên máy này.</p>
+        <div class="dialog-actions"><button type="button" id="open-key-page">Trang lấy khóa</button><button type="button" id="remove-key">Xóa khóa</button><button value="cancel">Đóng</button><button type="button" class="primary" id="store-key">Lưu</button></div>
+      </div>
+      <div id="session-connection" hidden>
+        <p class="hint">Gemini và DeepSeek dùng chung phiên Google trên máy. Đăng nhập Google ở một bên, sau đó chọn Đăng nhập bằng Google ở bên còn lại để dùng tài khoản đó; trang có thể yêu cầu bạn xác nhận.</p>
+        <p id="argon-direct-hint" class="hint" hidden>Chọn model Gemini trong app rồi gửi bằng Session đã đăng nhập. Tài khoản cần có quyền dùng model đã chọn.</p>
+        <p id="session-status" class="hint">Chưa kiểm tra Session.</p>
+        <div class="dialog-actions"><button type="button" id="clear-session">Đặt lại Session</button><button type="button" id="check-session">Kiểm tra</button><button type="button" id="use-provider-api">Dùng API key</button><button value="cancel">Đóng</button><button type="button" class="primary" id="open-session">Mở web trong app</button></div>
+      </div>
+    </form>
+  </dialog>
+  <div id="toast" role="status"></div>
+  <script src="highlight.js"></script>
+  <script src="terminal-commands.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,354 @@
+{
+  "provenance": {
+    "source": "NTTCodeX_v0.6.55_Undo_Redo_Toolbar_SOURCE(2).zip",
+    "file": "app/src/main/java/com/nttcode/mobile/ai/DeepSeekPrivateSessionClient.kt",
+    "sha256": "456e7c4a4ff65484362c28bcdc1adc2c41ed756a952c057a73b97bdc1daf37af",
+    "capturedFrom": "Actual buildRequestScript JavaScript, with mocked fetch and Worker; no real credentials or network."
+  },
+  "cases": [
+    {
+      "params": {
+        "resultKey": "__mobile_fixture",
+        "prompt": "Kiểm tra DeepSeek mobile → PC",
+        "thinkingEnabled": false,
+        "searchEnabled": false,
+        "sessionId": null,
+        "parentMessageId": null,
+        "powWorkerUrl": "https://fe-static.deepseek.com/chat/static/76608.8f2a9fa413.js"
+      },
+      "expected": {
+        "started": "started",
+        "result": {
+          "done": true,
+          "status": "ok",
+          "text": "OK",
+          "sessionId": "fixture-chat",
+          "parentMessageId": "17"
+        },
+        "requests": [
+          {
+            "url": "/api/v0/chat_session/create",
+            "method": "POST",
+            "credentials": "include",
+            "headers": {
+              "authorization": "Bearer mobile-fixture-token",
+              "content-type": "application/json",
+              "accept": "text/event-stream",
+              "x-client-platform": "web",
+              "x-client-version": "2.2.0",
+              "x-client-locale": "zh_CN",
+              "x-client-bundle-id": "com.deepseek.chat"
+            },
+            "body": {}
+          },
+          {
+            "url": "/api/v0/chat/create_pow_challenge",
+            "method": "POST",
+            "credentials": "include",
+            "headers": {
+              "authorization": "Bearer mobile-fixture-token",
+              "content-type": "application/json",
+              "accept": "text/event-stream",
+              "x-client-platform": "web",
+              "x-client-version": "2.2.0",
+              "x-client-locale": "zh_CN",
+              "x-client-bundle-id": "com.deepseek.chat"
+            },
+            "body": {
+              "target_path": "/api/v0/chat/completion"
+            }
+          },
+          {
+            "url": "https://fe-static.deepseek.com/chat/static/76608.8f2a9fa413.js",
+            "method": "GET",
+            "credentials": "omit"
+          },
+          {
+            "url": "/api/v0/chat/completion",
+            "method": "POST",
+            "credentials": "include",
+            "headers": {
+              "authorization": "Bearer mobile-fixture-token",
+              "content-type": "application/json",
+              "accept": "text/event-stream",
+              "x-client-platform": "web",
+              "x-client-version": "2.2.0",
+              "x-client-locale": "zh_CN",
+              "x-client-bundle-id": "com.deepseek.chat",
+              "x-ds-pow-response": "eyJhbGdvcml0aG0iOiJEZWVwU2Vla0hhc2hWMSIsImNoYWxsZW5nZSI6InRo4butLXRow6FjaCIsInNhbHQiOiJmaXh0dXJlLXNhbHQiLCJhbnN3ZXIiOjUsInNpZ25hdHVyZSI6ImZpeHR1cmUtc2lnbmF0dXJlIiwidGFyZ2V0X3BhdGgiOiIvYXBpL3YwL2NoYXQvY29tcGxldGlvbiJ9"
+            },
+            "body": {
+              "chat_session_id": "fixture-chat",
+              "parent_message_id": null,
+              "model_type": "default",
+              "prompt": "Kiểm tra DeepSeek mobile → PC",
+              "ref_file_ids": [],
+              "thinking_enabled": false,
+              "search_enabled": false,
+              "action": null,
+              "preempt": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "params": {
+        "resultKey": "__mobile_fixture",
+        "prompt": "Kiểm tra DeepSeek mobile → PC",
+        "thinkingEnabled": false,
+        "searchEnabled": true,
+        "sessionId": null,
+        "parentMessageId": null,
+        "powWorkerUrl": "https://fe-static.deepseek.com/chat/static/76608.8f2a9fa413.js"
+      },
+      "expected": {
+        "started": "started",
+        "result": {
+          "done": true,
+          "status": "ok",
+          "text": "OK",
+          "sessionId": "fixture-chat",
+          "parentMessageId": "17"
+        },
+        "requests": [
+          {
+            "url": "/api/v0/chat_session/create",
+            "method": "POST",
+            "credentials": "include",
+            "headers": {
+              "authorization": "Bearer mobile-fixture-token",
+              "content-type": "application/json",
+              "accept": "text/event-stream",
+              "x-client-platform": "web",
+              "x-client-version": "2.2.0",
+              "x-client-locale": "zh_CN",
+              "x-client-bundle-id": "com.deepseek.chat"
+            },
+            "body": {}
+          },
+          {
+            "url": "/api/v0/chat/create_pow_challenge",
+            "method": "POST",
+            "credentials": "include",
+            "headers": {
+              "authorization": "Bearer mobile-fixture-token",
+              "content-type": "application/json",
+              "accept": "text/event-stream",
+              "x-client-platform": "web",
+              "x-client-version": "2.2.0",
+              "x-client-locale": "zh_CN",
+              "x-client-bundle-id": "com.deepseek.chat"
+            },
+            "body": {
+              "target_path": "/api/v0/chat/completion"
+            }
+          },
+          {
+            "url": "https://fe-static.deepseek.com/chat/static/76608.8f2a9fa413.js",
+            "method": "GET",
+            "credentials": "omit"
+          },
+          {
+            "url": "/api/v0/chat/completion",
+            "method": "POST",
+            "credentials": "include",
+            "headers": {
+              "authorization": "Bearer mobile-fixture-token",
+              "content-type": "application/json",
+              "accept": "text/event-stream",
+              "x-client-platform": "web",
+              "x-client-version": "2.2.0",
+              "x-client-locale": "zh_CN",
+              "x-client-bundle-id": "com.deepseek.chat",
+              "x-ds-pow-response": "eyJhbGdvcml0aG0iOiJEZWVwU2Vla0hhc2hWMSIsImNoYWxsZW5nZSI6InRo4butLXRow6FjaCIsInNhbHQiOiJmaXh0dXJlLXNhbHQiLCJhbnN3ZXIiOjUsInNpZ25hdHVyZSI6ImZpeHR1cmUtc2lnbmF0dXJlIiwidGFyZ2V0X3BhdGgiOiIvYXBpL3YwL2NoYXQvY29tcGxldGlvbiJ9"
+            },
+            "body": {
+              "chat_session_id": "fixture-chat",
+              "parent_message_id": null,
+              "model_type": "default",
+              "prompt": "Kiểm tra DeepSeek mobile → PC",
+              "ref_file_ids": [],
+              "thinking_enabled": false,
+              "search_enabled": true,
+              "action": null,
+              "preempt": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "params": {
+        "resultKey": "__mobile_fixture",
+        "prompt": "Kiểm tra DeepSeek mobile → PC",
+        "thinkingEnabled": true,
+        "searchEnabled": false,
+        "sessionId": null,
+        "parentMessageId": null,
+        "powWorkerUrl": "https://fe-static.deepseek.com/chat/static/76608.8f2a9fa413.js"
+      },
+      "expected": {
+        "started": "started",
+        "result": {
+          "done": true,
+          "status": "ok",
+          "text": "OK",
+          "sessionId": "fixture-chat",
+          "parentMessageId": "17"
+        },
+        "requests": [
+          {
+            "url": "/api/v0/chat_session/create",
+            "method": "POST",
+            "credentials": "include",
+            "headers": {
+              "authorization": "Bearer mobile-fixture-token",
+              "content-type": "application/json",
+              "accept": "text/event-stream",
+              "x-client-platform": "web",
+              "x-client-version": "2.2.0",
+              "x-client-locale": "zh_CN",
+              "x-client-bundle-id": "com.deepseek.chat"
+            },
+            "body": {}
+          },
+          {
+            "url": "/api/v0/chat/create_pow_challenge",
+            "method": "POST",
+            "credentials": "include",
+            "headers": {
+              "authorization": "Bearer mobile-fixture-token",
+              "content-type": "application/json",
+              "accept": "text/event-stream",
+              "x-client-platform": "web",
+              "x-client-version": "2.2.0",
+              "x-client-locale": "zh_CN",
+              "x-client-bundle-id": "com.deepseek.chat"
+            },
+            "body": {
+              "target_path": "/api/v0/chat/completion"
+            }
+          },
+          {
+            "url": "https://fe-static.deepseek.com/chat/static/76608.8f2a9fa413.js",
+            "method": "GET",
+            "credentials": "omit"
+          },
+          {
+            "url": "/api/v0/chat/completion",
+            "method": "POST",
+            "credentials": "include",
+            "headers": {
+              "authorization": "Bearer mobile-fixture-token",
+              "content-type": "application/json",
+              "accept": "text/event-stream",
+              "x-client-platform": "web",
+              "x-client-version": "2.2.0",
+              "x-client-locale": "zh_CN",
+              "x-client-bundle-id": "com.deepseek.chat",
+              "x-ds-pow-response": "eyJhbGdvcml0aG0iOiJEZWVwU2Vla0hhc2hWMSIsImNoYWxsZW5nZSI6InRo4butLXRow6FjaCIsInNhbHQiOiJmaXh0dXJlLXNhbHQiLCJhbnN3ZXIiOjUsInNpZ25hdHVyZSI6ImZpeHR1cmUtc2lnbmF0dXJlIiwidGFyZ2V0X3BhdGgiOiIvYXBpL3YwL2NoYXQvY29tcGxldGlvbiJ9"
+            },
+            "body": {
+              "chat_session_id": "fixture-chat",
+              "parent_message_id": null,
+              "model_type": "default",
+              "prompt": "Kiểm tra DeepSeek mobile → PC",
+              "ref_file_ids": [],
+              "thinking_enabled": true,
+              "search_enabled": false,
+              "action": null,
+              "preempt": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "params": {
+        "resultKey": "__mobile_fixture",
+        "prompt": "Kiểm tra DeepSeek mobile → PC",
+        "thinkingEnabled": true,
+        "searchEnabled": true,
+        "sessionId": null,
+        "parentMessageId": null,
+        "powWorkerUrl": "https://fe-static.deepseek.com/chat/static/76608.8f2a9fa413.js"
+      },
+      "expected": {
+        "started": "started",
+        "result": {
+          "done": true,
+          "status": "ok",
+          "text": "OK",
+          "sessionId": "fixture-chat",
+          "parentMessageId": "17"
+        },
+        "requests": [
+          {
+            "url": "/api/v0/chat_session/create",
+            "method": "POST",
+            "credentials": "include",
+            "headers": {
+              "authorization": "Bearer mobile-fixture-token",
+              "content-type": "application/json",
+              "accept": "text/event-stream",
+              "x-client-platform": "web",
+              "x-client-version": "2.2.0",
+              "x-client-locale": "zh_CN",
+              "x-client-bundle-id": "com.deepseek.chat"
+            },
+            "body": {}
+          },
+          {
+            "url": "/api/v0/chat/create_pow_challenge",
+            "method": "POST",
+            "credentials": "include",
+            "headers": {
+              "authorization": "Bearer mobile-fixture-token",
+              "content-type": "application/json",
+              "accept": "text/event-stream",
+              "x-client-platform": "web",
+              "x-client-version": "2.2.0",
+              "x-client-locale": "zh_CN",
+              "x-client-bundle-id": "com.deepseek.chat"
+            },
+            "body": {
+              "target_path": "/api/v0/chat/completion"
+            }
+          },
+          {
+            "url": "https://fe-static.deepseek.com/chat/static/76608.8f2a9fa413.js",
+            "method": "GET",
+            "credentials": "omit"
+          },
+          {
+            "url": "/api/v0/chat/completion",
+            "method": "POST",
+            "credentials": "include",
+            "headers": {
+              "authorization": "Bearer mobile-fixture-token",
+              "content-type": "application/json",
+              "accept": "text/event-stream",
+              "x-client-platform": "web",
+              "x-client-version": "2.2.0",
+              "x-client-locale": "zh_CN",
+              "x-client-bundle-id": "com.deepseek.chat",
+              "x-ds-pow-response": "eyJhbGdvcml0aG0iOiJEZWVwU2Vla0hhc2hWMSIsImNoYWxsZW5nZSI6InRo4butLXRow6FjaCIsInNhbHQiOiJmaXh0dXJlLXNhbHQiLCJhbnN3ZXIiOjUsInNpZ25hdHVyZSI6ImZpeHR1cmUtc2lnbmF0dXJlIiwidGFyZ2V0X3BhdGgiOiIvYXBpL3YwL2NoYXQvY29tcGxldGlvbiJ9"
+            },
+            "body": {
+              "chat_session_id": "fixture-chat",
+              "parent_message_id": null,
+              "model_type": "default",
+              "prompt": "Kiểm tra DeepSeek mobile → PC",
+              "ref_file_ids": [],
+              "thinking_enabled": true,
+              "search_enabled": true,
+              "action": null,
+              "preempt": false
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
