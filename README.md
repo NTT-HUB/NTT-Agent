@@ -2,7 +2,7 @@
 
 Ứng dụng AI hỗ trợ lập trình trên Windows. Bạn chọn một thư mục dự án; AI có thể đọc và sửa file trong đó, chạy lệnh bằng PowerShell, rồi kiểm tra kết quả.
 
-![Ảnh xem trước NTT Agent Desktop](peview.png)
+![Ảnh xem trước NTT Agent Desktop](preview.png)
 
 > **Tình trạng:** Dự án đang phát triển. Tính năng Session dùng luồng web không có cam kết ổn định từ nhà cung cấp; API chính thức là lựa chọn phù hợp hơn cho công việc cần độ tin cậy.
 
