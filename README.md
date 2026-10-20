@@ -1,4 +1,4 @@
-# NTT Agent Desktop
+# NTT Agent
 
 Ứng dụng AI hỗ trợ lập trình trên Windows. Bạn chọn một thư mục dự án; AI có thể đọc và sửa file trong đó, chạy lệnh bằng PowerShell, rồi kiểm tra kết quả.
 
